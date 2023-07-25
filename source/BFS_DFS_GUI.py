@@ -72,7 +72,7 @@ def mouseclick(pos):
             for p, location in enumerate(nodes):
                 if ((pos[0] >= (nodes[p].pos[0]-NODE_SPACE_ALLOWANCE) and pos[0] <= (nodes[p].pos[0]+NODE_SPACE_ALLOWANCE)) and
                     (pos[1] >= (nodes[p].pos[1]-NODE_SPACE_ALLOWANCE) and pos[1] <= (nodes[p].pos[1]+NODE_SPACE_ALLOWANCE))):
-                    print "Warning: Cannot create node on top of another node!"
+                    print( "Warning: Cannot create node on top of another node!")
                     allow_place_node = False
                     break
             # Creates new instance of Point class if no nodes detected in 
@@ -118,7 +118,7 @@ def mouseclick(pos):
                         draw_mark_relations = False
                         break
                     else:
-                        print "Warning: Recursion or self loop is not allowed."
+                        print( "Warning: Recursion or self loop is not allowed.")
 
 
 def button_refresh_new_relation():
@@ -137,7 +137,7 @@ def button_refresh_new_relation():
         for i, child in enumerate(nodes):
             del nodes[i].children[:]
     else:
-        print "Warning: This action is not allowed."
+        print( "Warning: This action is not allowed.")
 
 
 def button_lock_nodes():
@@ -158,9 +158,9 @@ def button_lock_nodes():
             for let in current_node_letters_up:
                 current_node_letters_low.append(let.lower())
 
-        print "The nodes are now locked in!"
+        print("The nodes are now locked in!")
     else:
-        print "Warning: This action is not allowed."
+        print("Warning: This action is not allowed.")
 
 def button_lock_graph():
     global placeNodes, setNodesRelation, nodes, lock_nodes
@@ -174,15 +174,15 @@ def button_lock_graph():
         # for index/element reference only, for later use in BFS and DFS functions
         for d, dot in enumerate(nodes):
             nodes[d].index = d
-            print "node"+str(d+1)+":", nodes[d].label
+            print("node"+str(d+1)+":", nodes[d].label)
             
             # This is important
             # This sorts the elements of children attribute list in ascending order
             nodes[d].children.sort()
 
-        print "Graph is now set!"
+        print("Graph is now set!")
     else:
-        print "Warning: This action is not allowed."
+        print("Warning: This action is not allowed.")
 
 
 def input_start_handler(start_string):
@@ -198,24 +198,24 @@ def input_start_handler(start_string):
                 
                 # Minus one because node label starts at 1 not zero(index)
                 start = temp_start
-                print "Start:", chr(start+65)
+                print("Start:", chr(start+65))
                 setStart = True
                 break 
         if setStart == False:  
-            print "Warning: This number is outside of the nodes!"
+            print("Warning: This number is outside of the nodes!")
     else:
         # Allows letter as input for starting node
         if start_string in current_node_letters_up:
             start = ord(start_string) - 65
             setStart = True
-            print "Start:", chr(start+65)
+            print("Start:", chr(start+65))
         else:
             if start_string in current_node_letters_low:
                 start = ord(start_string) - 97
                 setStart = True
-                print "Start:", chr(start+65)
+                print("Start:", chr(start+65))
             else:
-                print "Warning: Unknown input. Enter a number or the node letter."
+                print("Warning: Unknown input. Enter a number or the node letter.")
 
 
 def input_goal_handler(goal_string):
@@ -231,24 +231,24 @@ def input_goal_handler(goal_string):
             if temp_goal == element:
                 #minus one because node label starts at 1 not zero(index)
                 goal = temp_goal
-                print "Goal:", chr(goal+65)
+                print("Goal:", chr(goal+65))
                 setGoal = True
                 break
         if setGoal == False:
-            print "Warning: This number is outside of the nodes!"
+            print("Warning: This number is outside of the nodes!")
     else:
         # Allows letter as input for goal node
         if goal_string in current_node_letters_up:
             goal = ord(goal_string) - 65
             setGoal = True
-            print "Goal:", chr(goal+65)
+            print( "Goal:", chr(goal+65))
         else:
             if goal_string in current_node_letters_low:
                 goal = ord(goal_string) - 97
                 setGoal = True
-                print "Goal:", chr(goal+65)
+                print( "Goal:", chr(goal+65))
             else:
-                print "Warning: Unknown input. Enter a number or the node letter."
+                print( "Warning: Unknown input. Enter a number or the node letter.")
 
 
 def button_breadth_first_search():
@@ -263,8 +263,8 @@ def button_breadth_first_search():
     in_queue_result = False
 
     if placeNodes == False and setNodesRelation == False and setStart == True and setGoal == True:
-        print " "
-        print "BFS starts here:"
+        print( " ")
+        print( "BFS starts here:")
         
         # Checks queue if defined, 
         # if it is, then go to else and empty the list; otherwise create a new list
@@ -290,8 +290,8 @@ def button_breadth_first_search():
             queue.pop(0)
             
             pointer.is_mark = True
-            print " "
-            print "Pointer:", pointer.label
+            print( " ")
+            print( "Pointer:", pointer.label)
             
             if pointer.index == goal:
                 pointer_string =  "Pointer: " + pointer.label
@@ -306,7 +306,7 @@ def button_breadth_first_search():
                     queue_string += " "
                 
                 displayResult = True
-                print "SUCCESS!"
+                print( "SUCCESS!")
                 break
             else:
                 result.append(pointer)
@@ -332,12 +332,12 @@ def button_breadth_first_search():
             for obj in result:
                 result_string += str(obj.label)
                 result_string += " "
-            print result_string
+            print (result_string)
 
             for objt in queue:
                 queue_string += str(objt.label)
                 queue_string += " "
-            print queue_string
+            print( queue_string)
                     
                     
 def button_depth_first_search():
@@ -352,8 +352,8 @@ def button_depth_first_search():
     in_queue_result = False
 
     if placeNodes == False and setNodesRelation == False and setStart == True and setGoal == True:
-        print " "
-        print "DFS starts here:"
+        print(" ")
+        print("DFS starts here:")
         
         # Checks queue if defined, 
         # if it is, then go to else and empty the list; otherwise create new list
@@ -389,8 +389,8 @@ def button_depth_first_search():
             queue.pop(0)
             #print "pointer is", pointer
             pointer.is_mark = True
-            print " "
-            print "Pointer:", pointer.label
+            print( " ")
+            print( "Pointer:", pointer.label)
             
             
             if pointer.index == goal:
@@ -406,7 +406,7 @@ def button_depth_first_search():
                     queue_string += " "
                 
                 displayResult = True
-                print "SUCCESS!"
+                print( "SUCCESS!")
                 break
             else:
                 result.append(pointer)
@@ -438,12 +438,12 @@ def button_depth_first_search():
             for obj in result:
                 result_string += str(obj.label)
                 result_string += " "
-            print result_string
+            print( result_string)
 
             for objt in queue:
                 queue_string += str(objt.label)
                 queue_string += " "
-            print queue_string  
+            print( queue_string  )
 
 
 def draw_handler(canvas):
